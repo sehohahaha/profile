@@ -11,9 +11,24 @@
   <link rel="icon" href="assets/img/logo.ico">
   <style>
     body { font-family: 'Inter', sans-serif; background: #f8f9fa; margin: 0; }
-    .navbar { width: 100%; background: #22243a; display: flex; align-items: center; padding: 0.6em 0; box-shadow: 0 2px 8px rgba(34,36,58,.06); position: relative;}
-    .navbar ul { margin: 0; padding: 0; list-style: none; display: flex; gap: 32px;}
-    .navbar li { display: inline-block;}
+    .navbar {
+      width: 100%;
+      background: #22243a;
+      display: flex;
+      justify-content: center;    /* PC 중앙정렬 */
+      align-items: center;
+      padding: 0.6em 0;
+      box-shadow: 0 2px 8px rgba(34,36,58,.06);
+      position: relative;
+    }
+    .navbar ul {
+      margin: 0 auto;             /* PC 메뉴 중앙 */
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+    .navbar li { display: inline-block; }
     .navbar a { color: #e4c590; text-decoration: none; font-weight: 600; letter-spacing: 0.5px; font-size: 1.07em; padding: 4px 12px; border-radius: 12px; transition: background .18s, color .18s;}
     .navbar a.active, .navbar a:hover { background: #e4c590; color: #22243a;}
     /* 햄버거 메뉴 버튼 */
@@ -24,10 +39,11 @@
       font-size: 2.2em;
       color: #e4c590;
       position: absolute;
-      right: 20px;
-      top: 10px;
+      right: 0;    /* 모바일 우측 끝 */
+      top: 8px;
       cursor: pointer;
       z-index: 1100;
+      padding-right: 14px;
     }
     @media (max-width: 700px) {
       .navbar ul {
@@ -49,6 +65,8 @@
     .tab-content { display: none; padding: 40px 12px 20px 12px; max-width: 960px; margin: 0 auto;}
     .tab-content.active { display: block; }
     .section-title { margin-bottom: 24px; text-align: left;}
+    
+    /* About */
     .about-row {
       max-width: 900px;
       margin: 0 auto;
@@ -57,13 +75,17 @@
       gap: 48px;
     }
     .profile-img { width: 160px; border-radius: 14px; box-shadow: 0 4px 24px rgba(34,36,58,0.08); background: #fff; }
-    .about-text { flex: 1; min-width: 210px; max-width:520px; margin:0; font-size:1.05em; line-height:1.7; color:#232425;}
+    .about-text { flex: 1; min-width: 210px; max-width:520px; margin:0; font-size:1.05em; line-height:1.7; color:#232425; }
+    
+    /* Welcome */
     .welcome-content { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 320px;}
     .welcome-content h1 { font-family: 'Playfair Display', serif; font-size: 2.4em; color: #e4c590; margin-top: 28px;}
     .welcome-content h2 { font-size: 1.25em; font-weight: 400; }
     .social-links { margin-top: 12px;}
     .social-links a { margin: 0 7px; color: #e4c590; font-size: 1.45em; text-decoration: none; transition: color 0.2s;}
     .social-links a:hover { color: #fff1d6;}
+    
+    /* Resume */
     .resume-list-centered {
       display: flex;
       flex-direction: column;
@@ -116,6 +138,8 @@
       font-family: 'Inter', sans-serif;
       word-break: break-all;
     }
+    
+    /* Portfolio */
     .portfolio-row {
       display: flex;
       flex-wrap: wrap;
@@ -137,11 +161,21 @@
       align-items: center;
       text-align: center;
     }
-    .portfolio-card img { width: 100%; height: 110px; object-fit: cover; border-top-left-radius: 14px; border-top-right-radius: 14px;}
+    .portfolio-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: contain;   /* 사진 전체 보이게 */
+      background: #fff;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      padding: 8px 0 8px 0;
+    }
     .portfolio-info { padding: 10px 9px 8px 9px; }
     .portfolio-info h4 { margin: 0 0 2px 0; font-size: 1em; font-weight: 600;}
     .portfolio-info p { margin: 0 0 1px 0; color: #727b8b; font-size: 0.98em;}
     .portfolio-info a { color: #e4c590; text-decoration: none; font-size: 0.95em;}
+    
+    /* Contact */
     .contact-blocks {
       display: flex;
       flex-wrap: wrap;
@@ -208,12 +242,12 @@
       .section-title { margin-bottom: 10px;}
       .portfolio-row { gap: 10px; }
       .portfolio-card { min-width: 120px; max-width: 95vw;}
-      .portfolio-card img { height: 68px; }
+      .portfolio-card img { height: 100px; padding: 4px 0 4px 0; }
       .contact-blocks { gap: 7px; }
       .contact-block { min-width: 95vw; max-width: 95vw; padding: 7px 6px 7px 6px;}
       .contact-title { font-size: 0.97em;}
     }
-  </style>
+    </style>
 </head>
 <body>
   <nav class="navbar">
