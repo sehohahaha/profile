@@ -11,15 +11,49 @@
   <link rel="icon" href="assets/img/logo.ico">
   <style>
     body { font-family: 'Inter', sans-serif; background: #f8f9fa; margin: 0; }
-    .navbar { width: 100%; background: #22243a; display: flex; justify-content: center; align-items: center; padding: 0.6em 0; box-shadow: 0 2px 8px rgba(34,36,58,.06);}
+    .navbar { width: 100%; background: #22243a; display: flex; justify-content: center; align-items: center; padding: 0.6em 0; box-shadow: 0 2px 8px rgba(34,36,58,.06); position: relative;}
     .navbar ul { margin: 0; padding: 0; list-style: none; display: flex; gap: 32px;}
     .navbar li { display: inline-block;}
     .navbar a { color: #e4c590; text-decoration: none; font-weight: 600; letter-spacing: 0.5px; font-size: 1.07em; padding: 4px 12px; border-radius: 12px; transition: background .18s, color .18s;}
     .navbar a.active, .navbar a:hover { background: #e4c590; color: #22243a;}
+    /* 햄버거 메뉴 버튼 */
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2.2em;
+      color: #e4c590;
+      margin-left: auto;
+      margin-right: 18px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+    @media (max-width: 650px) {
+      .navbar ul {
+        display: none;
+        flex-direction: column;
+        background: #22243a;
+        position: absolute;
+        top: 52px;
+        left: 0;
+        width: 100vw;
+        z-index: 1001;
+        box-shadow: 0 4px 20px rgba(34,36,58,0.17);
+        padding-bottom: 12px;
+      }
+      .navbar ul.show {
+        display: flex;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+      .navbar {
+        position: relative;
+      }
+    }
     .tab-content { display: none; padding: 70px 24px 40px 24px; max-width: 960px; margin: 0 auto;}
     .tab-content.active { display: block; }
     .section-title { margin-bottom: 36px; text-align: left;}
-    /* About 스타일 */
     .about-row {
       max-width: 950px;
       margin: 0 auto;
@@ -29,14 +63,12 @@
     }
     .profile-img { width: 210px; border-radius: 16px; box-shadow: 0 4px 24px rgba(34,36,58,0.08); background: #fff; }
     .about-text { flex: 1; min-width: 240px; max-width:600px; margin:0; font-size:1.11em; line-height:1.8; color:#232425;}
-    /* Welcome 스타일 */
     .welcome-content { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 400px;}
     .welcome-content h1 { font-family: 'Playfair Display', serif; font-size: 3.4em; color: #e4c590; margin-top: 40px;}
     .welcome-content h2 { font-size: 2em; font-weight: 400; }
     .social-links { margin-top: 18px;}
     .social-links a { margin: 0 10px; color: #e4c590; font-size: 1.8em; text-decoration: none; transition: color 0.2s;}
     .social-links a:hover { color: #fff1d6;}
-    /* Resume 스타일 */
     .resume-list-centered {
       display: flex;
       flex-direction: column;
@@ -87,7 +119,6 @@
       letter-spacing: 0.01em;
       font-family: 'Inter', sans-serif;
     }
-    /* Portfolio 스타일 */
     .portfolio-row { display: flex; flex-wrap: wrap; gap: 32px;}
     .portfolio-card { flex: 1 1 240px; background: #fff; border-radius: 16px; box-shadow: 0 2px 16px rgba(34,36,58,0.08); overflow: hidden; display: flex; flex-direction: column; min-width: 220px; max-width: 320px;}
     .portfolio-card img { width: 100%; height: 150px; object-fit: cover; border-top-left-radius: 16px; border-top-right-radius: 16px;}
@@ -95,7 +126,6 @@
     .portfolio-info h4 { margin: 0 0 4px 0; font-size: 1.14em; font-weight: 600;}
     .portfolio-info p { margin: 0 0 2px 0; color: #727b8b; font-size: 1em;}
     .portfolio-info a { color: #e4c590; text-decoration: none; font-size: 0.97em;}
-    /* Contact 스타일 */
     .contact-blocks {
       display: flex;
       flex-wrap: wrap;
@@ -164,6 +194,7 @@
 </head>
 <body>
   <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
     <ul>
       <li><a class="nav-link active" href="#" data-tab="welcome">Home</a></li>
       <li><a class="nav-link" href="#" data-tab="about">About</a></li>
@@ -173,6 +204,7 @@
     </ul>
   </nav>
 
+  <!-- ----- WELCOME ----- -->
   <div id="welcome" class="tab-content active">
     <div class="welcome-content">
       <h1>Seho Lee</h1>
@@ -193,6 +225,7 @@
     </div>
   </div>
 
+  <!-- ----- ABOUT ----- -->
   <div id="about" class="tab-content">
     <div class="section-title"><h2>About</h2><p>Learn more about me</p></div>
     <div class="about-row">
@@ -222,6 +255,7 @@
     </div>
   </div>
 
+  <!-- ----- RESUME ----- -->
   <div id="resume" class="tab-content">
     <div class="section-title"><h2>Resume</h2></div>
     <div class="resume-list-centered">
@@ -311,7 +345,8 @@
       </div>
     </div>
   </div>
-
+  
+  <!-- ----- PORTFOLIO ----- -->
   <div id="portfolio" class="tab-content">
     <div class="section-title"><h2>Portfolio</h2><p>Project Management</p></div>
     <div class="portfolio-row">
@@ -342,7 +377,8 @@
       <!-- 더 추가하려면 여기 카드 복사해서 붙이면 됨 -->
     </div>
   </div>
-
+  
+  <!-- ----- CONTACT ----- -->
   <div id="contact" class="tab-content">
     <div class="section-title"><h2>Contact</h2><p>Contact Me</p></div>
     <div class="contact-blocks">
@@ -377,11 +413,13 @@
       </div>
     </div>
   </div>
-
+  
   <script>
-    // 탭 클릭시 컨텐츠 전환
+    // 햄버거 메뉴 + 탭 기능
     const navLinks = document.querySelectorAll('.nav-link');
     const tabContents = document.querySelectorAll('.tab-content');
+    const navToggle = document.querySelector('.navbar-toggle');
+    const navUl = document.querySelector('.navbar ul');
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -391,8 +429,16 @@
         const tabId = this.getAttribute('data-tab');
         document.getElementById(tabId).classList.add('active');
         window.scrollTo({top: 0, behavior: 'smooth'});
+        if(window.innerWidth < 700){
+          navUl.classList.remove('show');
+        }
       });
     });
+    if(navToggle) {
+      navToggle.addEventListener('click', function() {
+        navUl.classList.toggle('show');
+      });
+    }
   </script>
-</body>
-</html>
+  </body>
+  </html>
