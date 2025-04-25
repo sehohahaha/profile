@@ -19,14 +19,75 @@
     .tab-content { display: none; padding: 70px 24px 40px 24px; max-width: 960px; margin: 0 auto;}
     .tab-content.active { display: block; }
     .section-title { margin-bottom: 36px; text-align: left;}
-    .about-row { display: flex; flex-wrap: wrap; gap: 40px; }
+    /* About 스타일 */
+    .about-row {
+      max-width: 950px;
+      margin: 0 auto;
+      align-items: flex-start;
+      display: flex;
+      gap: 56px;
+    }
     .profile-img { width: 210px; border-radius: 16px; box-shadow: 0 4px 24px rgba(34,36,58,0.08); background: #fff; }
-    .about-text { flex: 1; min-width: 240px; }
-    .resume-list { list-style: none; padding-left: 0; margin: 0; column-count: 2; column-gap: 36px;}
-    .resume-list li { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 1.02em; break-inside: avoid;}
-    .resume-list .job-title { color: #22243a; font-weight: 600; }
-    .resume-list .place { color: #e4c590; font-weight: 400; }
-    .resume-list .period { color: #777; font-size: 0.97em; }
+    .about-text { flex: 1; min-width: 240px; max-width:600px; margin:0; font-size:1.11em; line-height:1.8; color:#232425;}
+    /* Welcome 스타일 */
+    .welcome-content { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 400px;}
+    .welcome-content h1 { font-family: 'Playfair Display', serif; font-size: 3.4em; color: #e4c590; margin-top: 40px;}
+    .welcome-content h2 { font-size: 2em; font-weight: 400; }
+    .social-links { margin-top: 18px;}
+    .social-links a { margin: 0 10px; color: #e4c590; font-size: 1.8em; text-decoration: none; transition: color 0.2s;}
+    .social-links a:hover { color: #fff1d6;}
+    /* Resume 스타일 */
+    .resume-list-centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 26px;
+    }
+    .resume-item {
+      width: 100%;
+      max-width: 570px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 26px 18px 18px 18px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(34,36,58,0.08);
+      transition: box-shadow .2s;
+    }
+    .resume-item:not(:last-child) { margin-bottom: 10px;}
+    .resume-item:hover {
+      box-shadow: 0 6px 36px rgba(34,36,58,0.14);
+      transform: scale(1.022);
+    }
+    .resume-heading {
+      font-size: 1.16em;
+      color: #22243a;
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .resume-location {
+      color: #e4c590;
+      font-size: 0.98em;
+      font-weight: 500;
+      margin-left: 8px;
+    }
+    .resume-period {
+      color: #7d7d7d;
+      font-size: 0.97em;
+      margin-left: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+    .resume-jobs {
+      color: #555;
+      font-size: 1em;
+      font-weight: 500;
+      margin-top: 1px;
+      letter-spacing: 0.01em;
+      font-family: 'Inter', sans-serif;
+    }
+    /* Portfolio 스타일 */
     .portfolio-row { display: flex; flex-wrap: wrap; gap: 32px;}
     .portfolio-card { flex: 1 1 240px; background: #fff; border-radius: 16px; box-shadow: 0 2px 16px rgba(34,36,58,0.08); overflow: hidden; display: flex; flex-direction: column; min-width: 220px; max-width: 320px;}
     .portfolio-card img { width: 100%; height: 150px; object-fit: cover; border-top-left-radius: 16px; border-top-right-radius: 16px;}
@@ -34,124 +95,71 @@
     .portfolio-info h4 { margin: 0 0 4px 0; font-size: 1.14em; font-weight: 600;}
     .portfolio-info p { margin: 0 0 2px 0; color: #727b8b; font-size: 1em;}
     .portfolio-info a { color: #e4c590; text-decoration: none; font-size: 0.97em;}
-    .contact-info { background: #fff; border-radius: 18px; box-shadow: 0 2px 16px rgba(34,36,58,0.07); padding: 32px; max-width: 560px; margin: 0 auto;}
-    .contact-info h3 { margin-top: 0; font-size: 1.08em; color: #22243a;}
-    .contact-info p { font-size: 1.09em; }
-    .welcome-content { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 400px;}
-    .welcome-content h1 { font-family: 'Playfair Display', serif; font-size: 3.4em; color: #e4c590; margin-top: 40px;}
-    .welcome-content h2 { font-size: 2em; font-weight: 400; }
-    .social-links { margin-top: 18px;}
-    .social-links a { margin: 0 10px; color: #e4c590; font-size: 1.8em; text-decoration: none; transition: color 0.2s;}
-    .social-links a:hover { color: #fff1d6;}
-    @media (max-width: 980px) { .tab-content { padding: 70px 10px 32px 10px;} .resume-list { column-count: 1;} .portfolio-row { flex-direction: column; gap: 18px;} .about-row { flex-direction: column; gap: 20px;}}
-    @media (max-width: 640px) { .welcome-content h1 { font-size: 2em; } }
+    /* Contact 스타일 */
     .contact-blocks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  justify-content: center;
-  margin-top: 30px;
-}
-.contact-block {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 4px 24px rgba(34,36,58,0.08);
-  display: flex;
-  align-items: center;
-  min-width: 250px;
-  max-width: 340px;
-  flex: 1 1 280px;
-  padding: 26px 28px 22px 22px;
-  transition: box-shadow .2s;
-}
-.contact-block:hover {
-  box-shadow: 0 6px 32px rgba(34,36,58,0.17);
-  transform: translateY(-2px) scale(1.025);
-}
-.contact-icon {
-  width: 54px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 14px;
-  font-size: 2em;
-  margin-right: 18px;
-  color: #22243a;
-}
-.contact-info-detail {
-  flex: 1;
-}
-.contact-title {
-  font-size: 1.09em;
-  color: #22243a;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-.contact-block a {
-  color: #e4c590;
-  font-weight: 500;
-  text-decoration: none;
-  word-break: break-all;
-}
-.contact-block a:hover {
-  text-decoration: underline;
-  color: #b49554;
-}
-@media (max-width: 900px) {
-  .contact-blocks { flex-direction: column; gap: 18px;}
-  .contact-block { max-width: none; }
-}
-.resume-list-centered {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 26px;
-}
-.resume-item {
-  width: 100%;
-  max-width: 570px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 26px 18px 18px 18px;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(34,36,58,0.08);
-  transition: box-shadow .2s;
-}
-.resume-item:not(:last-child) { margin-bottom: 10px;}
-.resume-item:hover {
-  box-shadow: 0 6px 36px rgba(34,36,58,0.14);
-  transform: scale(1.022);
-}
-.resume-heading {
-  font-size: 1.16em;
-  color: #22243a;
-  font-family: 'Playfair Display', serif;
-  font-weight: bold;
-  margin-bottom: 6px;
-  line-height: 1.4;
-}
-.resume-location {
-  color: #e4c590;
-  font-size: 0.98em;
-  font-weight: 500;
-  margin-left: 8px;
-}
-.resume-period {
-  color: #7d7d7d;
-  font-size: 0.97em;
-  margin-left: 8px;
-  font-family: 'Inter', sans-serif;
-}
-.resume-jobs {
-  color: #555;
-  font-size: 1em;
-  font-weight: 500;
-  margin-top: 1px;
-  letter-spacing: 0.01em;
-  font-family: 'Inter', sans-serif;
-}
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .contact-block {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(34,36,58,0.08);
+      display: flex;
+      align-items: center;
+      min-width: 250px;
+      max-width: 340px;
+      flex: 1 1 280px;
+      padding: 26px 28px 22px 22px;
+      transition: box-shadow .2s;
+    }
+    .contact-block:hover {
+      box-shadow: 0 6px 32px rgba(34,36,58,0.17);
+      transform: translateY(-2px) scale(1.025);
+    }
+    .contact-icon {
+      width: 54px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      font-size: 2em;
+      margin-right: 18px;
+      color: #22243a;
+    }
+    .contact-info-detail { flex: 1; }
+    .contact-title {
+      font-size: 1.09em;
+      color: #22243a;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .contact-block a {
+      color: #e4c590;
+      font-weight: 500;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .contact-block a:hover {
+      text-decoration: underline;
+      color: #b49554;
+    }
+    @media (max-width: 980px) {
+      .tab-content { padding: 70px 10px 32px 10px;}
+      .resume-list { column-count: 1;}
+      .portfolio-row { flex-direction: column; gap: 18px;}
+      .about-row { flex-direction: column; gap: 24px; max-width:97vw; align-items: center;}
+      .about-text { max-width:98vw !important; margin:0 auto !important; font-size:1em;}
+      .profile-img { margin:0 auto 8px auto; width:110px !important; min-width:95px !important; border-radius:13px;}
+    }
+    @media (max-width: 900px) {
+      .contact-blocks { flex-direction: column; gap: 18px;}
+      .contact-block { max-width: none; }
+    }
+    @media (max-width: 640px) { .welcome-content h1 { font-size: 2em; } }
   </style>
 </head>
 <body>
@@ -187,9 +195,9 @@
 
   <div id="about" class="tab-content">
     <div class="section-title"><h2>About</h2><p>Learn more about me</p></div>
-    <div class="about-row" style="max-width: 950px; margin: 0 auto; align-items: flex-start; display:flex; gap:56px;">
+    <div class="about-row">
       <img src="assets/img/me.jpg" class="profile-img" alt="Profile photo">
-      <div class="about-text" style="max-width:600px; margin:0; font-size:1.11em; line-height:1.8; color:#232425;">
+      <div class="about-text">
         <p style="font-size:1.13em; font-weight:600; color:#22243a; margin-bottom:14px;">Hi everyone!</p>
         <p style="margin-bottom:16px;">
           I have a range of experiences working at different cafes in Korea<br>and Australia.
@@ -331,7 +339,7 @@
           <a href="https://www.instagram.com/hillon_official/" target="_blank"><i class="bi bi-link-45deg"></i> Instagram</a>
         </div>
       </div>
-      <!-- 추가 프로젝트는 여기에 더 카드 복사해서 붙이면 됨 -->
+      <!-- 더 추가하려면 여기 카드 복사해서 붙이면 됨 -->
     </div>
   </div>
 
@@ -377,14 +385,11 @@
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        // 모든 링크/탭 비활성화
         navLinks.forEach(l => l.classList.remove('active'));
         tabContents.forEach(tab => tab.classList.remove('active'));
-        // 클릭한 탭 활성화
         this.classList.add('active');
         const tabId = this.getAttribute('data-tab');
         document.getElementById(tabId).classList.add('active');
-        // 스크롤 맨 위로
         window.scrollTo({top: 0, behavior: 'smooth'});
       });
     });
