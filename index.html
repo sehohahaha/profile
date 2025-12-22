@@ -134,7 +134,7 @@
 
     .tab-content {
       display: none;
-      min-height: calc(100vh - 80px);
+      min-height: auto;
       padding: 3rem 1.5rem;
       animation: fadeIn 0.5s ease;
     }
@@ -187,8 +187,8 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      min-height: calc(100vh - 80px);
-      padding: 2rem;
+      min-height: auto;
+      padding: 4rem 2rem;
     }
 
     .hero-content {
@@ -203,15 +203,15 @@
       border-radius: 50px;
       font-size: 0.85rem;
       color: var(--accent);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 5rem);
+      font-size: clamp(2.5rem, 6vw, 4rem);
       font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       line-height: 1.1;
     }
 
@@ -230,7 +230,7 @@
       font-size: 1rem;
       color: var(--text-secondary);
       opacity: 0.8;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .social-links {
@@ -661,25 +661,6 @@
       }
     }
 
-    /* Scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: bounce 2s infinite;
-    }
-
-    .scroll-indicator i {
-      font-size: 1.5rem;
-      color: var(--text-secondary);
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-10px); }
-      60% { transform: translateX(-50%) translateY(-5px); }
-    }
   </style>
 </head>
 <body>
@@ -725,9 +706,6 @@
               <i class="bi bi-envelope"></i>
             </a>
           </div>
-        </div>
-        <div class="scroll-indicator">
-          <i class="bi bi-chevron-down"></i>
         </div>
       </div>
     </section>
@@ -1118,6 +1096,16 @@
         navMenu.classList.remove('active');
         navToggle.querySelector('i').classList.replace('bi-x', 'bi-list');
       }
+    });
+
+    // Logo click - go to Home
+    document.querySelector('.logo').addEventListener('click', function(e) {
+      e.preventDefault();
+      navLinks.forEach(l => l.classList.remove('active'));
+      tabContents.forEach(tab => tab.classList.remove('active'));
+      document.querySelector('[data-tab="welcome"]').classList.add('active');
+      document.getElementById('welcome').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>
